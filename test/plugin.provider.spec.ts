@@ -1,21 +1,20 @@
 /* tslint:disable:no-unused-expression no-empty */
 import { Verifier } from '@pact-foundation/pact';
 import path = require('path');
-import { startHTTPServer, startTCPServer } from '../provider';
+import { startHTTPServer } from '../provider';
 
 describe('Plugins', () => {
   const HOST = '127.0.0.1';
 
   describe('Verification', () => {
-    describe('with MATT protocol', () => {
+    describe('with FooBar protocol', () => {
       const HTTP_PORT = 8888;
-      const TCP_PORT = 8887;
 
       beforeEach(async () => {
         await startHTTPServer(HOST, HTTP_PORT);
       });
 
-      it('validates TCP and HTTP matt messages', async () => {
+      it('validates HTTP FooBar messages', async () => {
         const v = new Verifier({
           providerBaseUrl: `http://${HOST}:${HTTP_PORT}`,
           pactUrls: [
